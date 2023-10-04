@@ -1,7 +1,5 @@
 package algorithms.kmp
 
-import kotlin.collections.ArrayList
-
 class KnuthMorrisPrattImpl : KnuthMorrisPratt {
 
     /**
@@ -10,12 +8,12 @@ class KnuthMorrisPrattImpl : KnuthMorrisPratt {
      */
     override fun computeLSPTable(pattern: List<Char>): List<Int> {
         val lsp = MutableList(pattern.size) { 0 }
-        var j = 0;
-        for(patternIndex in 1..< pattern.size){
-            while(j > 0 && pattern[patternIndex] != pattern[j]){
-                j = lsp[j-1]
+        var j = 0
+        for (patternIndex in 1..<pattern.size) {
+            while (j > 0 && pattern[patternIndex] != pattern[j]) {
+                j = lsp[j - 1]
             }
-            if(pattern[patternIndex]== pattern[j]){
+            if (pattern[patternIndex] == pattern[j]) {
                 lsp[patternIndex] = j + 1
                 j++
             }
