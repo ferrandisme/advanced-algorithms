@@ -21,4 +21,18 @@ class KnuthMorrisPrattImplTest {
         assertEquals(listOf(0, 1), algorithm.computeLSPTable("aa".toList()))
         assertEquals(listOf(0, 0), algorithm.computeLSPTable("ab".toList()))
     }
+
+    @Test
+    fun search() {
+        assertEquals(8, algorithm.search("abazacabababac".toList(), "ababac".toList()).get())
+        assertEquals(0, algorithm.search("aabaaabacaz".toList(), "aaba".toList()).get())
+        assertEquals(4, algorithm.search("aabaaabacaz".toList(), "aabacaz".toList()).get())
+        assertEquals(0, algorithm.search("I hope this is a valid text".toList(), "I hope".toList()).get())
+        assertEquals(7, algorithm.search("I hope this is a valid text".toList(), "this is a".toList()).get())
+        assertEquals(17, algorithm.search("I hope this is a valid text".toList(), "valid text".toList()).get())
+        
+        assertEquals(true, algorithm.search("I hope this is a valid text".toList(), "error".toList()).isEmpty())
+        assertEquals(true, algorithm.search("aabaaabacaz".toList(), "aabacaza".toList()).isEmpty)
+        assertEquals(true, algorithm.search("aabaaabacaz".toList(), "abb".toList()).isEmpty)
+    }
 }
